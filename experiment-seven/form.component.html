@@ -1,0 +1,75 @@
+<!-- Registration Form with new layout -->
+<form [formGroup]="itemForm" (ngSubmit)="addItem()">
+  <div class="form-header">
+    <h2>Create Account</h2>
+    <p>Join our community today</p>
+  </div>
+  <div class="form-body">
+    <div class="input-wrapper">
+      <label>Full Name</label>
+      <div class="input-icon-wrapper">
+        <span class="input-icon">👤</span>
+        <input type="text" formControlName="name" placeholder="Enter your full name">
+      </div>
+      <div class="error-msg" *ngIf="itemForm.get('name')?.invalid && itemForm.get('name')?.touched">
+        ⚠️ Name is required
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <label>Email Address</label>
+      <div class="input-icon-wrapper">
+        <span class="input-icon">📧</span>
+        <input type="email" formControlName="email" placeholder="example@mail.com">
+      </div>
+      <div class="error-msg" *ngIf="itemForm.get('email')?.touched && itemForm.get('email')?.invalid">
+        ⚠️ Valid email is required
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <label>Username</label>
+      <div class="input-icon-wrapper">
+        <span class="input-icon">@</span>
+        <input type="text" formControlName="username" placeholder="Choose a username">
+      </div>
+      <div class="error-msg" *ngIf="itemForm.get('username')?.invalid && itemForm.get('username')?.touched">
+        ⚠️ Username is required
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <label>Password</label>
+      <div class="input-icon-wrapper">
+        <span class="input-icon">🔒</span>
+        <input type="password" formControlName="password" placeholder="At least 6 characters">
+      </div>
+      <div class="error-msg" *ngIf="itemForm.get('password')?.touched && itemForm.get('password')?.invalid">
+        ⚠️ Password must be at least 6 characters
+      </div>
+    </div>
+    <div class="button-wrapper">
+      <button type="submit" [disabled]="itemForm.invalid">
+        <span>✨</span> Register Now
+      </button>
+    </div>
+  </div>
+</form>
+<!-- Recent Registrations with new layout -->
+<div class="list-header">
+  <h2>Recent Registrations</h2>
+  <span class="user-count">{{ items.length }} users</span>
+</div>
+<ul>
+  <li *ngFor="let user of items; let i = index">
+    <div class="user-avatar">
+      {{ user.name.charAt(0) }}{{ user.name.split(' ')[1]?.charAt(0) || '' }}
+    </div>
+    <div class="user-info">
+      <strong>{{ user.name }}</strong>
+      <div class="user-username">@{{ user.username }}</div>
+      <p class="user-email">{{ user.email }}</p>
+    </div>
+  </li>
+  <li *ngIf="items.length === 0" class="empty-state">
+    <div>📝</div>
+    <p>No registrations yet. Be the first!</p>
+  </li>
+</ul>

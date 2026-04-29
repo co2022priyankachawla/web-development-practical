@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment Three | To Do</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col s12 center-align">
+        <h4>ToDo!</h4>
+        <p>Your reminder</p>
+      </div>
+      <div class="col s12">
+        <div id="main" class="card">
+          <div class="card-content">
+            <span class="card-title">Task List</span>
+            <div class="row">
+            <div class="row">
+              <form id="taskForm" action="#">
+                <div class="input-field col s10">
+                  <input id="task" type="text" name="task">
+                  <label for="task">New Task</label>
+                </div>
+                <div class="col s2">
+                  <button type="submit" class="btn-floating btn-large waves-effect waves-light black" style="margin-top: 10px;">
+                    <i class="material-icons">add</i>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <div class="card-action">
+              <div class="row">
+                <div class="col s12">
+                  <h5>Tasks</h5>
+                  <ul id="taskList" class="collection">
+                  </ul>
+  
+                  <a href="#" id="clearAllTasks" class="btn black">Clear All Tasks</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <h4>Edit Task</h4>
+      <div class="input-field">
+        <input id="editTaskValue" type="text">
+        <label class="active" for="editTaskValue">Task Name</label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <form id="editForm">
+        <input type="hidden" id="editTaskId">
+        <button id="updateTaskBtn" type="submit" class="modal-close waves-effect waves-green btn">Save Changes</button>
+        <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+      </form>
+    </div>
+  </div>
+
+  <div id="deleteModal" class="modal">
+    <div class="modal-content">
+      <h4>Delete Me? &#128542;</h4>
+      <p>Are you sure you wanna delete me?</p>
+    </div>
+    <div class="modal-footer">
+      <form>
+        <input type="hidden" id="taskId">
+        <button id="deleteYes" class="modal-close waves-effect waves-green btn">Agree</button>
+        <button id="deleteCancel" class="modal-close waves-effect waves-red btn-flat">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
